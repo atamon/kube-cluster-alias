@@ -1,6 +1,14 @@
 # kube-cluster-alias
 For when you work in several clusters at the same time and tend to get sloppy
+
+
 # Usage
+
+```sh
+k-{suffix}-{namespace} get pods # etc ...
+```
+
+# Setup
 
 ## Fish Shell
 ```sh
