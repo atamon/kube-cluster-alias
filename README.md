@@ -1,19 +1,19 @@
 # kube-cluster-alias
 For when you work in several clusters at the same time and tend to get sloppy
 
-# Requirements
+## Requirements
 
 Depends on `jq` (https://stedolan.github.io/jq/) to get the namespaces. (Yeah I guess this should be done without a dependency :) )
 
-# Usage
+## Usage
 
 ```sh
 k-{suffix}-{namespace} get pods # etc ...
 ```
 
-# Setup
+## Setup
 
-## Fish Shell
+### Fish Shell
 ```sh
 # Constructa  ./clusters.txt file containing your clusters as "cluster-name:suffix"
 echo "my-prod-cluster:prod" >> ./kube-cluster-alias/clusters.txt
@@ -29,5 +29,5 @@ k-test-namespace1 get pods
 # ... and so on
 ```
 
-## Bash
+### Bash
 The same as above, but just source the file directly I guess :)
