@@ -1,14 +1,13 @@
 #!/bin/bash
+set -e
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+dir=$1
 
+config_files=$(ls "$dir" | grep "\-config")
 
-for alias in $(cat $DIR/clusters.txt); do
-  arr=(${alias//\:/ })
-  cluster=${arr[0]}
-  suffix=${arr[1]}
-
-  command="kubectl --cluster $cluster"
+for file in $config_files; do
+  suffix=$(echo "$file" | sed 's|\-config||')
+  command="kubectl --kubeconfig $dir/$file"
 
   echo "alias \"k-$suffix=$command\""
 
@@ -17,5 +16,4 @@ for alias in $(cat $DIR/clusters.txt); do
   for ns in $nss; do
     echo "alias \"k-$suffix-$ns=$command -n $ns\""
   done
-
 done
